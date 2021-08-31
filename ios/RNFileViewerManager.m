@@ -60,6 +60,10 @@
     return self.file;
 }
 
+- (void)viewDidLayoutSubviews {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] init];
+}
+
 @end
 
 @implementation RNFileViewer
