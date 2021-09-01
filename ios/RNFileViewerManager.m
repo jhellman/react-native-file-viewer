@@ -47,6 +47,21 @@
     }
     return self;
 }
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] init]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    UINavigationController *cont = [self.childViewControllers firstObject];
+    for(UIView *view in cont.view.subviews) {
+        if([view isKindOfClass:[UIToolbar class]]) {
+            [(UIView *)view.subviews[1] setHidden:YES];
+        }
+    }
+}
 
 - (BOOL)prefersStatusBarHidden {
     return UIApplication.sharedApplication.isStatusBarHidden;
@@ -61,7 +76,7 @@
 }
 
 - (void)viewDidLayoutSubviews {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] init];
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] init]];
 }
 
 @end
